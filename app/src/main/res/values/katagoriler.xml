@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="katagoriler">
+        <item>Günlük</item>
+        <item>İş</item>
+        <item>Küfür</item>
+    </string-array>
+</resources>

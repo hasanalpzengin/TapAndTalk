@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tıkla ve Konuş</string>
+
+    <string name="add">Ekle</string>
+    <string name="read">Oku</string>
+    <string name="EnterText">Yazı Girin</string>
+    <string name="inputError">Eklemek için bir yazı girmelisiniz.</string>
+    <string name="languageChange">Change Language</string>
+    <string name="isExist">Var olan bir yazıyı eklemeye çalışıyorsunuz.</string>
+</resources>

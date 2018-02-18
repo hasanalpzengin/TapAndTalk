@@ -1,0 +1,46 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/hasalp/Dropbox/Projeler/TypeAndTalk/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en/values-en.xml",
+            "map": [
+                {
+                    "source": "/home/hasalp/Dropbox/Projeler/TypeAndTalk/app/src/main/res/values-en/strings.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,104,140,191,262,348,407",
+                        "endColumns": "48,35,50,70,85,58,37",
+                        "endOffsets": "99,135,186,257,343,402,440"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/hasalp/Dropbox/Projeler/TapAndTalk/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en/values-en.xml",
+            "map": [
+                {
+                    "source": "/home/hasalp/Dropbox/Projeler/TapAndTalk/app/src/main/res/values-en/strings.xml",
+                    "from": {
+                        "startLines": "6,4,2,7,9,8,5",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "181,107,55,230,357,301,143",
+                        "endColumns": "48,35,50,70,85,55,37",
+                        "endOffsets": "225,138,101,296,438,352,176"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,104,140,191,262,348,404",
+                        "endColumns": "48,35,50,70,85,55,37",
+                        "endOffsets": "99,135,186,257,343,399,437"
+                    }
+                }
+            ]
+        }
+    ]
+}

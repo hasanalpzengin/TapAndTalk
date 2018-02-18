@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Tıkla ve Konuş</string>
+
+    <string name="add">Ekle</string>
+    <string name="read">Oku</string>
+    <string name="EnterText">Yazı Girin</string>
+    <string name="inputError">Eklemek için bir yazı girmelisiniz.</string>
+    <string name="keepDefault">Keep Default</string>
+    <string name="languageChange">Dil Değiştir</string>
+    <string name="isExist">Var olan bir yazıyı eklemeye çalışıyorsunuz.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

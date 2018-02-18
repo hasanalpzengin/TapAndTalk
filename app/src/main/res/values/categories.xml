@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories">
+        <item>Daily</item>
+        <item>Work</item>
+        <item>Curse</item>
+    </string-array>
+</resources>
