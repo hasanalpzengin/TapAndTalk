@@ -1,0 +1,4 @@
+#Wed Feb 21 08:47:58 EET 2018
+base.0=/home/hasalp/Dropbox/Projeler/TapAndTalk/app/build/intermediates/transforms/dex/release/0
+path.0=classes.dex
+renamed.0=classes.dex

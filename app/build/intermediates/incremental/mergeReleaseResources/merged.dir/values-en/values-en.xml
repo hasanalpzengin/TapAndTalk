@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="EnterText">Enter Text</string>
+    <string name="add">Add</string>
+    <string name="addCategory">Add Category</string>
+    <string name="app_name">Tap and Talk</string>
+    <string name="categoryAdded">Category Added</string>
+    <string name="categoryHint">Enter category name</string>
+    <string name="delete">Delete</string>
+    <string name="deleteCategory">Delete Current Category</string>
+    <string name="favoriteAdded"> Added to Favorites</string>
+    <string name="inputError">You have to enter a text to add</string>
+    <string name="isExist">You are trying to add text which is already exist</string>
+    <string name="languageChange">Dil Değiştir</string>
+    <string name="read">Read</string>
+    <string name="textAdded"> Added</string>
+    <string name="textDeleted"> Deleted</string>
+    <string name="undo">Undo</string>
+</resources>
