@@ -21,11 +21,20 @@
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"%s ile paylaş"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Daralt"</string>
     <string name="add">Ekle</string>
+    <string name="addCategory">Kategori Ekle</string>
     <string name="app_name">Tıkla ve Konuş</string>
+    <string name="categoryAdded">Kategori Eklendi</string>
+    <string name="categoryHint">Kategori ismi girin</string>
+    <string name="delete">Sil</string>
+    <string name="deleteCategory">Şu Anki Kategoriyi Sil</string>
+    <string name="favoriteAdded"> Favorilere Eklendi</string>
     <string name="inputError">Eklemek için bir yazı girmelisiniz.</string>
     <string name="isExist">Var olan bir yazıyı eklemeye çalışıyorsunuz.</string>
     <string name="languageChange">Change Language</string>
     <string name="read">Oku</string>
     <string msgid="146198913615257606" name="search_menu_title">"Ara"</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="textAdded"> Eklendi</string>
+    <string name="textDeleted"> Silindi</string>
+    <string name="undo">Geri Al</string>
 </resources>

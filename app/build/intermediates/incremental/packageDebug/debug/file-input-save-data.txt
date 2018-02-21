@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Feb 18 22:13:57 EET 2018
+#Tue Feb 20 22:12:20 EET 2018
 0.baseType=DIRECTORY
 0.base=/home/hasalp/Dropbox/Projeler/TapAndTalk/app/build/intermediates/transforms/dexMerger/debug/0
 0.path=classes.dex

@@ -2,7 +2,15 @@
 <resources>
     <string-array name="katagoriler">
         <item>Günlük</item>
+        <item>Alışveriş</item>
         <item>İş</item>
-        <item>Küfür</item>
+        <item>Olumlu</item>
+        <item>Olumsuz</item>
+        <item>Duygusal</item>
+        <item>Nesneler</item>
+        <item>Tebrik</item>
+        <item>Sayılar</item>
+        <item>Diğer 1</item>
+        <item>Diğer 2</item>
     </string-array>
 </resources>

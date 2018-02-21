@@ -2,7 +2,15 @@
 <resources>
     <string-array name="categories">
         <item>Daily</item>
+        <item>Shopping</item>
         <item>Work</item>
-        <item>Curse</item>
+        <item>Affirmative</item>
+        <item>Negatory</item>
+        <item>Emotional</item>
+        <item>Objects</item>
+        <item>Greeting</item>
+        <item>Number</item>
+        <item>Other 1</item>
+        <item>Other 2</item>
     </string-array>
 </resources>

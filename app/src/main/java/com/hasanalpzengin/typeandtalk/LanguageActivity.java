@@ -2,15 +2,12 @@ package com.hasanalpzengin.typeandtalk;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,7 +36,7 @@ public class LanguageActivity extends AppCompatActivity {
         turkishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lang = new String("tr_TR");
+                lang = new String("tr");
                 changeLang(getApplicationContext(),lang);
                 Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainActivity);

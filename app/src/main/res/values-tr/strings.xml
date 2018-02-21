@@ -8,4 +8,13 @@
     <string name="inputError">Eklemek için bir yazı girmelisiniz.</string>
     <string name="languageChange">Change Language</string>
     <string name="isExist">Var olan bir yazıyı eklemeye çalışıyorsunuz.</string>
+    <string name="delete">Sil</string>
+    <string name="textDeleted"> Silindi</string>
+    <string name="favoriteAdded"> Favorilere Eklendi</string>
+    <string name="textAdded"> Eklendi</string>
+    <string name="undo">Geri Al</string>
+    <string name="addCategory">Kategori Ekle</string>
+    <string name="categoryHint">Kategori ismi girin</string>
+    <string name="categoryAdded">Kategori Eklendi</string>
+    <string name="deleteCategory">Şu Anki Kategoriyi Sil</string>
 </resources>

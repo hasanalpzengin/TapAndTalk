@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="defaultTexts">
+        <item>Günaydın@Günlük</item>
+        <item>Nasılsın@Günlük</item>
+        <item>İyiyim, Teşekkürler@Günlük</item>
+        <item>Kötüyüm@Günlük</item>
+        <item>İyi Akşamlar@Günlük</item>
+        <item>Kaç Para@Alışveriş</item>
+        <item>Daha büyüğü var mı ?@Alışveriş</item>
+        <item>Daha küçüğü var mı ?@Alışveriş</item>
+        <item>1 Kilo@Alışveriş</item>
+        <item>Yarım Kilo@Alışveriş</item>
+        <item>Evet@Olumlu</item>
+        <item>Olur@Olumlu</item>
+        <item>Tamam@Olumlu</item>
+        <item>Tabiki@Olumlu</item>
+        <item>Kabul Ediyorum@Olumlu</item>
+        <item>Hayır@Olumsuz</item>
+        <item>Olmaz@Olumsuz</item>
+        <item>Kabul Etmiyorum@Olumsuz</item>
+        <item>Duygulandım@Duygusal</item>
+        <item>Seni Seviyorum@Duygusal</item>
+        <item>Aşkım@Duygusal</item>
+        <item>Üzüldüm@Duygusal</item>
+        <item>Mutlu Oldum@Duygusal</item>
+        <item>Elma@Nesne</item>
+        <item>Bardak@Nesne</item>
+        <item>Tabak@Nesne</item>
+        <item>Ekmek@Nesne</item>
+        <item>Tebrik Ederim@Tebrik</item>
+        <item>Teşekkür Ederim@Tebrik</item>
+        <item>İyiydin@Tebrik</item>
+        <item>Daha iyi olabilirdi@Tebrik</item>
+        <item>0@Sayılar</item>
+        <item>1@Sayılar</item>
+        <item>2@Sayılar</item>
+        <item>3@Sayılar</item>
+        <item>4@Sayılar</item>
+        <item>5@Sayılar</item>
+        <item>6@Sayılar</item>
+        <item>7@Sayılar</item>
+        <item>8@Sayılar</item>
+        <item>9@Sayılar</item>
+        <item>Good Morning@Daily</item>
+        <item>How Are You@Daily</item>
+        <item>Good Evenings@Daily</item>
+        <item>How much is this ?@Shopping</item>
+        <item>Do you have bigger size of this ?@Shopping</item>
+        <item>Do you have smaller size of this ?@Shopping</item>
+        <item>1 Kilogram@Shopping</item>
+        <item>Half Kilogram@Shopping</item>
+        <item>Yes@Affirmative</item>
+        <item>OK@Affirmative</item>
+        <item>Okey@Affirmative</item>
+        <item>Of course@Affirmative</item>
+        <item>Agreed@Affirmative</item>
+        <item>No@Negatory</item>
+        <item>Noway@Negatory</item>
+        <item>Disagreed@Negatory</item>
+        <item>I got emotional@Emotional</item>
+        <item>I love you@Emotional</item>
+        <item>My dear@Emotional</item>
+        <item>I got sad@Emotional</item>
+        <item>I got happy@Emotional</item>
+        <item>Apple@Objects</item>
+        <item>Glass@Objects</item>
+        <item>Plate@Objects</item>
+        <item>Break@Objects</item>
+        <item>Congratulations@Greeting</item>
+        <item>Thank You@Greeting</item>
+        <item>You were good@Greeting</item>
+        <item>It can be better@Greeting</item>
+        <item>0@Number</item>
+        <item>1@Number</item>
+        <item>2@Number</item>
+        <item>3@Number</item>
+        <item>4@Number</item>
+        <item>5@Number</item>
+        <item>6@Number</item>
+        <item>7@Number</item>
+        <item>8@Number</item>
+        <item>9@Number</item>
+    </string-array>
+</resources>

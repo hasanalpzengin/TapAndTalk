@@ -17,6 +17,7 @@ public class DBOperations {
     DBHelper dbh;
     private final int OLD_DB = 1;
     private final String[] COLUMNS = {"text", "favorite", "category"};
+    private final String[] CATEGORY_COLUMNS = {"name", "lang"};
 
     public DBOperations(Context context) {
         this.dbh = new DBHelper(context, OLD_DB);
@@ -43,6 +44,35 @@ public class DBOperations {
         Log.i("DB","addText: Added");
     }
 
+    public void addCategory(String name, String lang){
+        ContentValues val = new ContentValues();
+        val.put(CATEGORY_COLUMNS[0],name);
+        val.put(CATEGORY_COLUMNS[1],lang);
+        db.insert(DBHelper.CATEGORY_TABLE, null, val);
+    }
+
+    public void deleteCategory(String name){
+        db.delete(DBHelper.GENERATED_ACTIVITY_TABLE, COLUMNS[2]+"=?", new String[]{name});
+        db.delete(DBHelper.CATEGORY_TABLE, CATEGORY_COLUMNS[0]+"=?", new String[]{name});
+    }
+
+    public ArrayList<Category> getCategories(String lang){
+        ArrayList<Category> categories = new ArrayList<>();
+        Cursor c = db.query(DBHelper.CATEGORY_TABLE, CATEGORY_COLUMNS, "lang=?", new String[]{lang}, null, null, null);
+
+        c.moveToFirst();
+        while(!c.isAfterLast()){
+            Category category = new Category();
+            category.setTitle(c.getString(0));
+            categories.add(category);
+            c.moveToNext();
+        }
+
+        c.close();
+
+        return categories;
+    }
+
     public void changeFavorite(String text){
         Cursor c = db.query(DBHelper.GENERATED_ACTIVITY_TABLE,new String[]{COLUMNS[1]}, "text LIKE ?", new String[]{text},null, null, null);
         c.moveToFirst();
@@ -58,25 +88,10 @@ public class DBOperations {
         db.update(DBHelper.GENERATED_ACTIVITY_TABLE,cv,"text LIKE ?", new String[]{text});
     }
 
-    public ArrayList<Favorite> getList(){
-        ArrayList<Favorite> favorites = new ArrayList<>();
-        Cursor c = db.query(DBHelper.GENERATED_ACTIVITY_TABLE, COLUMNS, null, null, null, null, null);
-
-        c.moveToFirst();
-        while(!c.isAfterLast()){
-            favorites.add(new Favorite(c.getString(0), c.getString(2), c.getInt(1)));
-            c.moveToNext();
-        }
-
-        c.close();
-
-        return favorites;
-    }
-
     public ArrayList<Favorite> getCategoryList(String category){
         ArrayList<Favorite> favorites = new ArrayList<>();
 
-        Cursor c = db.query(DBHelper.GENERATED_ACTIVITY_TABLE, new String[]{COLUMNS[0],COLUMNS[1]}, "category LIKE ?", new String[]{category},null,null, COLUMNS[1]+" DESC");
+        Cursor c = db.query(DBHelper.GENERATED_ACTIVITY_TABLE, new String[]{COLUMNS[0],COLUMNS[1]}, "category LIKE ?", new String[]{category},null,null, COLUMNS[1]+" DESC, "+COLUMNS[0]+" ASC");
         c.moveToFirst();
         while(!c.isAfterLast()){
             favorites.add(new Favorite(c.getString(0), category, c.getInt(1)));

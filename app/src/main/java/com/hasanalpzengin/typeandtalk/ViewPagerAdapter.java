@@ -1,5 +1,6 @@
 package com.hasanalpzengin.typeandtalk;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,22 +13,16 @@ import java.util.ArrayList;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    private ArrayList<Fragment> categories;
-    private ArrayList<String> titles;
+    private ArrayList<Category> categories;
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
         categories = new ArrayList<>();
-        titles = new ArrayList<>();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return titles.get(position);
-    }
-
-    public void setPageTitle(int position, String title){
-        titles.set(position,title);
+        return categories.get(position).title;
     }
 
     @Override
@@ -35,14 +30,32 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return categories.size();
     }
 
-    public void addCategory(Fragment fragment, String title) {
-        ((Category)fragment).setTitle(title);
-        categories.add(fragment);
-        titles.add(title);
+    public void addCategory(Category category, String title) {
+        category.setTitle(title);
+        categories.add(category);
+    }
+
+    public void clear(){
+        categories.clear();
+    }
+
+    public void updateAdapter(DBOperations dbOperations, String lang){
+        clear();
+        dbOperations.open_readable();
+        categories = dbOperations.getCategories(lang);
+        dbOperations.close_db();
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
     }
 
     @Override
     public Fragment getItem(int position) {
         return categories.get(position);
     }
+
+
 }

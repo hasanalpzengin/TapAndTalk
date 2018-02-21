@@ -1,9 +1,11 @@
 package com.hasanalpzengin.typeandtalk;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -16,21 +18,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button addButton, readButton;
+    Button addButton, readButton, addCategoryButton;
     ArrayList<Category> categories;
-    TextInputLayout textInputLayout;
-    TextInputEditText textInputEditText;
+    TextInputLayout textInputLayout, categoryInputLayout;
+    TextInputEditText textInputEditText, categoryInputEditText;
     DBOperations dbOperations;
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter viewPagerAdapter;
+    AlertDialog.Builder alertDialogBuilder;
+    AlertDialog categoryAlertDialog;
+    View addCategoryDialog;
     private TextToSpeech textToSpeech;
     String lang;
     SharedPreferences sharedPreferences;
@@ -67,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        tabLayout.setOnCreateContextMenuListener(this);
+
         //Log.i("MainActivity","Item count ="+categories.get(0).recyclerView.getAdapter().getItemCount());
     }
-
-
 
     @Override
     protected void onResume() {
@@ -110,8 +119,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(language);
                 return true;
             }
+            case R.id.addCategory:{
+                categoryAlertDialog.show();
+                return true;
+            }
+            case R.id.deleteCategory:{
+                deleteCategory();
+                return true;
+            }
         }
-        return super.onOptionsItemSelected(item);
+        return false;
+    }
+
+    private void deleteCategory() {
+        int currentPage = viewPager.getCurrentItem();
+
+        dbOperations.open_writable();
+        dbOperations.deleteCategory(categories.get(currentPage).title);
+        categories = dbOperations.getCategories(lang);
+        dbOperations.close_db();
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     @Override
@@ -130,9 +160,12 @@ public class MainActivity extends AppCompatActivity {
                 if (textInputEditText.getText().toString().length()>0) {
                     if (!categories.get(viewPager.getCurrentItem()).isExists(textInputEditText.getText().toString())){
                         dbOperations.open_writable();
-                        dbOperations.addText(textInputEditText.getText().toString(), categories.get(viewPager.getCurrentItem()).title);
+                        String text = textInputEditText.getText().toString();
+                        dbOperations.addText(text, categories.get(viewPager.getCurrentItem()).title);
                         dbOperations.close_db();
                         categories.get(viewPager.getCurrentItem()).updateAdapter();
+                        Snackbar.make(viewPager ,text+" "+getResources().getString(R.string.textAdded), Toast.LENGTH_SHORT).show();
+                        textInputEditText.setText("");
                     }else{
                         textInputLayout.setError(getResources().getString(R.string.isExist));
                     }
@@ -156,6 +189,41 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        addCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String categoryName = categoryInputEditText.getText().toString();
+                if (categoryName.length()>0){
+                    if (!isCategoryExists(categoryName)){
+                        addCategory(categoryName);
+                    }
+                }else{
+                    categoryInputLayout.setErrorEnabled(true);
+                    categoryInputLayout.setError(getResources().getString(R.string.inputError));
+                }
+            }
+        });
+
+        categoryInputEditText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                categoryInputLayout.setErrorEnabled(false);
+                return false;
+            }
+        });
+
+    }
+
+    private void addCategory(String categoryName){
+        dbOperations.open_writable();
+        dbOperations.addCategory(categoryName, lang);
+        categories = dbOperations.getCategories(lang);
+        dbOperations.close_db();
+        Toast.makeText(getApplicationContext(), getResources().getString(R.string.categoryAdded), Toast.LENGTH_SHORT).show();
+        viewPagerAdapter.updateAdapter(dbOperations, lang);
+
+        categoryAlertDialog.dismiss();
     }
 
     private void init(){
@@ -165,31 +233,46 @@ public class MainActivity extends AppCompatActivity {
         textInputLayout = findViewById(R.id.inputLayout);
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
+        addCategoryButton = findViewById(R.id.addCategory);
         dbOperations = new DBOperations(getApplicationContext());
+        categories = new ArrayList<>();
+
+        alertDialogBuilder = new AlertDialog.Builder(this);
+        addCategoryDialog = getLayoutInflater().inflate(R.layout.add_category_dialog, null);
+        addCategoryButton = addCategoryDialog.findViewById(R.id.addCategory);
+        categoryInputLayout = addCategoryDialog.findViewById(R.id.categoryInputLayout);
+        categoryInputEditText = addCategoryDialog.findViewById(R.id.categoryInputEditText);
+
+
+        alertDialogBuilder.setView(addCategoryDialog);
+        categoryAlertDialog = alertDialogBuilder.create();
 
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        String[] categoriesArray;
-        if (lang.contentEquals("tr_TR")){
-            categoriesArray = getApplicationContext().getResources().getStringArray(R.array.katagoriler);
-        }else{
-            categoriesArray = getApplicationContext().getResources().getStringArray(R.array.categories);
-        }
-
-        categories = new ArrayList<>();
-
         dbOperations.open_readable();
-        for (String value: categoriesArray){
-            Category category = new Category();
-            category.setTitle(value);
-            category.setFavorites(dbOperations.getCategoryList(value));
-            categories.add(category);
-            viewPagerAdapter.addCategory(category ,value);
+
+        categories = dbOperations.getCategories(lang);
+        for (Category category: categories){
+            category.setFavorites(dbOperations.getCategoryList(category.title));
+            viewPagerAdapter.addCategory(category ,category.title);
         }
+
         dbOperations.close_db();
 
         viewPager.setAdapter(viewPagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private boolean isCategoryExists(String categoryName) {
+        for (Category category: categories){
+            Log.i("Title = ", category.title);
+            if (categoryName.contentEquals(category.title)){
+                categoryInputLayout.setErrorEnabled(true);
+                categoryInputLayout.setError(getResources().getString(R.string.isExist));
+                return true;
+            }
+        }
+        return false;
     }
 }

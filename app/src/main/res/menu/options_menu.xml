@@ -4,4 +4,8 @@
 
     <item android:id="@+id/changeLanguage"
         android:title="@string/languageChange" />
+
+    <item android:id="@+id/addCategory" android:title="@string/addCategory"></item>
+
+    <item android:id="@+id/deleteCategory" android:title="@string/deleteCategory"></item>
 </menu>

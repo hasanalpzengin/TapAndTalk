@@ -11,6 +11,10 @@ public class Favorite {
         this.favorite = favorite;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public String getText() {
         return text;
     }
@@ -21,9 +25,5 @@ public class Favorite {
 
     public int getFavorite() {
         return favorite;
-    }
-
-    public void setFavorite(int favorite) {
-        this.favorite = favorite;
     }
 }

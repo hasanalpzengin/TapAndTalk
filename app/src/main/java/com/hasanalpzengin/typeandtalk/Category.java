@@ -3,14 +3,16 @@ package com.hasanalpzengin.typeandtalk;
 import android.content.Context;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +29,6 @@ public class Category extends Fragment {
     private TextToSpeech textToSpeech;
 
     public Category() {
-
     }
 
     public void setTitle(String title){
@@ -44,10 +45,10 @@ public class Category extends Fragment {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
         //define recyclerview
         recyclerView = view.findViewById(R.id.favoritesRecycler);
-        //define db operations class
-        dbOperations = new DBOperations(getContext());
         //define favorites arrayList
         favorites = new ArrayList<>();
+        //define db operations class
+        dbOperations = new DBOperations(getContext());
         //define recyclerAdapter
         recyclerAdapter = new FavoritesRecyclerAdapter(getContext(), favorites);
         //define linearlayout for recyclerview
@@ -97,8 +98,8 @@ public class Category extends Fragment {
     public void updateAdapter(){
         dbOperations.open_readable();
         recyclerAdapter.favorites = dbOperations.getCategoryList(title);
-        favorites = recyclerAdapter.favorites;
         dbOperations.close_db();
+        favorites = recyclerAdapter.favorites;
         recyclerAdapter.notifyDataSetChanged();
     }
 
@@ -116,7 +117,7 @@ public class Category extends Fragment {
         public FavoritesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             //inflate
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.favorite_card, null);
+            View view = inflater.inflate(R.layout.favorite_card, parent, false);
             return new FavoritesViewHolder(view);
         }
 
@@ -139,10 +140,11 @@ public class Category extends Fragment {
         }
 
 
-        class FavoritesViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener{
+        class FavoritesViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener, View.OnCreateContextMenuListener{
             //view elements from activities_card layout
+            String text;
+            String category;
             TextView activityName;
-            Button deleteButton;
             ImageView starImage;
             int position;
 
@@ -150,36 +152,55 @@ public class Category extends Fragment {
                 super(itemView);
                 //init
                 activityName = itemView.findViewById(R.id.titleText);
-                deleteButton = itemView.findViewById(R.id.delete);
                 starImage = itemView.findViewById(R.id.starImage);
-
-                deleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dbOperations.open_writable();
-                        dbOperations.deleteText(activityName.getText().toString());
-                        dbOperations.close_db();
-                        updateAdapter();
-                    }
-                });
+                itemView.setOnCreateContextMenuListener(this);
 
                 starImage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dbOperations.open_writable();
                         dbOperations.changeFavorite(activityName.getText().toString());
-                        dbOperations.close_db();
                         updateAdapter();
+                        dbOperations.close_db();
+                        Snackbar.make(recyclerView, activityName.getText().toString()+" "+getResources().getString(R.string.favoriteAdded), Snackbar.LENGTH_SHORT).show();
                     }
                 });
 
                 itemView.setOnClickListener(this);
+                itemView.setOnCreateContextMenuListener(this);
+
             }
 
             @Override
             public void onClick(View view) {
                 TextView tv = view.findViewById(R.id.titleText);
                 textToSpeech.speak(tv.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+            }
+
+            @Override
+            public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+                MenuItem delete = contextMenu.add(0, 1, 0, R.string.delete);
+                delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        text = activityName.getText().toString();
+                        category = favorites.get(position).getCategory();
+                        //delete operation
+                        dbOperations.open_writable();
+                        dbOperations.deleteText(activityName.getText().toString());
+                        dbOperations.close_db();
+                        Snackbar.make(recyclerView, activityName.getText().toString()+" "+getResources().getString(R.string.textDeleted), Snackbar.LENGTH_SHORT).setAction(getResources().getString(R.string.undo), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dbOperations.open_writable();
+                                dbOperations.addText(text, category);
+                                updateAdapter();
+                                dbOperations.close_db();
+                            }
+                        }).show();
+                        return true;
+                    }
+                });
             }
         }
     }

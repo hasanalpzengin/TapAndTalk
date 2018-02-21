@@ -2,13 +2,111 @@
 <resources xmlns:ns1="http://schemas.android.com/tools">
     <string-array name="categories">
         <item>Daily</item>
+        <item>Shopping</item>
         <item>Work</item>
-        <item>Curse</item>
+        <item>Affirmative</item>
+        <item>Negatory</item>
+        <item>Emotional</item>
+        <item>Objects</item>
+        <item>Greeting</item>
+        <item>Number</item>
+        <item>Other 1</item>
+        <item>Other 2</item>
+    </string-array>
+    <string-array name="defaultTexts">
+        <item>Günaydın@Günlük</item>
+        <item>Nasılsın@Günlük</item>
+        <item>İyiyim, Teşekkürler@Günlük</item>
+        <item>Kötüyüm@Günlük</item>
+        <item>İyi Akşamlar@Günlük</item>
+        <item>Kaç Para@Alışveriş</item>
+        <item>Daha büyüğü var mı ?@Alışveriş</item>
+        <item>Daha küçüğü var mı ?@Alışveriş</item>
+        <item>1 Kilo@Alışveriş</item>
+        <item>Yarım Kilo@Alışveriş</item>
+        <item>Evet@Olumlu</item>
+        <item>Olur@Olumlu</item>
+        <item>Tamam@Olumlu</item>
+        <item>Tabiki@Olumlu</item>
+        <item>Kabul Ediyorum@Olumlu</item>
+        <item>Hayır@Olumsuz</item>
+        <item>Olmaz@Olumsuz</item>
+        <item>Kabul Etmiyorum@Olumsuz</item>
+        <item>Duygulandım@Duygusal</item>
+        <item>Seni Seviyorum@Duygusal</item>
+        <item>Aşkım@Duygusal</item>
+        <item>Üzüldüm@Duygusal</item>
+        <item>Mutlu Oldum@Duygusal</item>
+        <item>Elma@Nesne</item>
+        <item>Bardak@Nesne</item>
+        <item>Tabak@Nesne</item>
+        <item>Ekmek@Nesne</item>
+        <item>Tebrik Ederim@Tebrik</item>
+        <item>Teşekkür Ederim@Tebrik</item>
+        <item>İyiydin@Tebrik</item>
+        <item>Daha iyi olabilirdi@Tebrik</item>
+        <item>0@Sayılar</item>
+        <item>1@Sayılar</item>
+        <item>2@Sayılar</item>
+        <item>3@Sayılar</item>
+        <item>4@Sayılar</item>
+        <item>5@Sayılar</item>
+        <item>6@Sayılar</item>
+        <item>7@Sayılar</item>
+        <item>8@Sayılar</item>
+        <item>9@Sayılar</item>
+        <item>Good Morning@Daily</item>
+        <item>How Are You@Daily</item>
+        <item>Good Evenings@Daily</item>
+        <item>How much is this ?@Shopping</item>
+        <item>Do you have bigger size of this ?@Shopping</item>
+        <item>Do you have smaller size of this ?@Shopping</item>
+        <item>1 Kilogram@Shopping</item>
+        <item>Half Kilogram@Shopping</item>
+        <item>Yes@Affirmative</item>
+        <item>OK@Affirmative</item>
+        <item>Okey@Affirmative</item>
+        <item>Of course@Affirmative</item>
+        <item>Agreed@Affirmative</item>
+        <item>No@Negatory</item>
+        <item>Noway@Negatory</item>
+        <item>Disagreed@Negatory</item>
+        <item>I got emotional@Emotional</item>
+        <item>I love you@Emotional</item>
+        <item>My dear@Emotional</item>
+        <item>I got sad@Emotional</item>
+        <item>I got happy@Emotional</item>
+        <item>Apple@Objects</item>
+        <item>Glass@Objects</item>
+        <item>Plate@Objects</item>
+        <item>Break@Objects</item>
+        <item>Congratulations@Greeting</item>
+        <item>Thank You@Greeting</item>
+        <item>You were good@Greeting</item>
+        <item>It can be better@Greeting</item>
+        <item>0@Number</item>
+        <item>1@Number</item>
+        <item>2@Number</item>
+        <item>3@Number</item>
+        <item>4@Number</item>
+        <item>5@Number</item>
+        <item>6@Number</item>
+        <item>7@Number</item>
+        <item>8@Number</item>
+        <item>9@Number</item>
     </string-array>
     <string-array name="katagoriler">
         <item>Günlük</item>
+        <item>Alışveriş</item>
         <item>İş</item>
-        <item>Küfür</item>
+        <item>Olumlu</item>
+        <item>Olumsuz</item>
+        <item>Duygusal</item>
+        <item>Nesneler</item>
+        <item>Tebrik</item>
+        <item>Sayılar</item>
+        <item>Diğer 1</item>
+        <item>Diğer 2</item>
     </string-array>
     <attr format="reference" name="constraintSet"/>
     <attr format="reference" name="drawerArrowStyle"/>
@@ -130,9 +228,9 @@
     <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
-    <color name="colorAccent">#FFAB00</color>
-    <color name="colorPrimary">#FFC107</color>
-    <color name="colorPrimaryDark">#FF6F00</color>
+    <color name="colorAccent">#00867d</color>
+    <color name="colorPrimary">#4db6ac</color>
+    <color name="colorPrimaryDark">#00867d</color>
     <color name="design_bottom_navigation_shadow_color">#14000000</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
@@ -151,6 +249,7 @@
     <color name="foreground_material_light">@android:color/black</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
+    <color name="ic_launcher_background">#31B39E</color>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
@@ -749,7 +848,7 @@
     <integer name="hide_password_duration">320</integer>
     <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <string name="EnterText">Yazı Girin</string>
+    <string name="EnterText">Enter Text</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -781,24 +880,32 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="add">Ekle</string>
-    <string name="app_name">Tıkla ve Konuş</string>
+    <string name="add">Add</string>
+    <string name="addCategory">Add Category</string>
+    <string name="app_name">Tap and Talk</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="categoryAdded">Category Added</string>
+    <string name="categoryHint">Enter category name</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="inputError">Eklemek için bir yazı girmelisiniz.</string>
-    <string name="isExist">Var olan bir yazıyı eklemeye çalışıyorsunuz.</string>
-    <string name="keepDefault">Keep Default</string>
+    <string name="delete">Delete</string>
+    <string name="deleteCategory">Delete Current Category</string>
+    <string name="favoriteAdded"> Added to Favorites</string>
+    <string name="inputError">You have to enter a text to add</string>
+    <string name="isExist">You are trying to add text which is already exist</string>
+    <string name="keepDefault">Skip</string>
     <string name="languageChange">Dil Değiştir</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
-    <string name="read">Oku</string>
+    <string name="read">Read</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="textAdded"> Added</string>
+    <string name="textDeleted"> Deleted</string>
+    <string name="undo">Undo</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
