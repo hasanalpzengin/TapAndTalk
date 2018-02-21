@@ -198,6 +198,7 @@ public class Category extends Fragment {
                                 dbOperations.close_db();
                             }
                         }).show();
+                        updateAdapter();
                         return true;
                     }
                 });
